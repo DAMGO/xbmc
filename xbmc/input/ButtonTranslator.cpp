@@ -142,6 +142,7 @@ static const ActionMapping actions[] =
         {"rewind"            , ACTION_PLAYER_REWIND},
         {"play"              , ACTION_PLAYER_PLAY},
         {"playpause"         , ACTION_PLAYER_PLAYPAUSE},
+        {"record"            , ACTION_RECORD},
         {"delete"            , ACTION_DELETE_ITEM},
         {"copy"              , ACTION_COPY_ITEM},
         {"move"              , ACTION_MOVE_ITEM},
