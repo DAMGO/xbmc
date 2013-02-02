@@ -369,6 +369,21 @@ bool CGUIWindowFullScreen::OnAction(const CAction &action)
       return true;
     }
     break;
+  case ACTION_RECORD:
+    if (g_application.CurrentFileItem().IsLiveTV())
+    {
+      if( g_application.IsPlaying() && g_application.m_pPlayer && g_application.m_pPlayer->CanRecord())
+		{
+#ifdef HAS_WEB_SERVER_BROADCAST
+          if (m_pXbmcHttp && g_settings.m_HttpApiBroadcastLevel>=1)
+            g_application.getApplicationMessenger().HttpApi(g_application.m_pPlayer->IsRecording()?"broadcastlevel; RecordStopping;1":"broadcastlevel; RecordStarting;1");
+#endif
+		    g_application.m_pPlayer->Record(!g_application.m_pPlayer->IsRecording());
+		}
+	}
+    return true;    
+    break;          //here normally not necessary
+    
   case REMOTE_0:
   case REMOTE_1:
   case REMOTE_2:
